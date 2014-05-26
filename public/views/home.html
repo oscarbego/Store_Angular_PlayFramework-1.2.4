@@ -1,0 +1,111 @@
+<div class="row">
+	<div class="span3">
+		<div class="well">
+			<div class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<i class="icon-shopping-cart"></i>
+							{{car.length}}  item - $ {{total}}
+					<b class="caret"></b></a>
+				</a>
+				<div class="dropdown-menu well" role="menu" aria-labelledby="dLabel">
+							<div ng-repeat="entreda in car">
+								<a href="#/detail/{{entreda.producto.id}}">
+                                                                        {{entreda.producto.name}} 
+									<br>
+									{{entreda.cantidad}} x $ {{entreda.producto.price}}
+									<br>
+									<span class="pull-right"> Import $ {{entreda.importe}}
+									</span>
+								</a>
+								<hr>
+							</div>
+							
+							<a href="#/cart" class="btn btn-primary">Checkout Total: {{total}}</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="well">
+			<ul class="nav nav-list">
+				<li class="nav-header">Special Offer</li>
+				<li class="active">
+					<a href="#/detail/{{specialOffer.id}}">{{specialOffer.name}}</a>	
+				</li>
+				
+
+				<li class="nav-header">Offer</li>
+
+				<li ng-repeat="offer in offers">
+					<a href="#/detail/{{offer.id}}">{{offer.name}} $ {{offer.price}}</a>
+				</li>
+								
+			</ul>
+		</div>
+
+		<div class="well">
+					<form class="form login-form">
+                                                <div ng-hide="usu.id">
+                                                    <h2>Sign in</h2>
+							<label>Username</label>
+							<input ng-model="usu.email" type="text" />
+
+							<label>Password</label>
+							<input ng-model="usu.password" type="password" />
+
+							<!-- <label class="checkbox inline">
+								<input type="checkbox" id="RememberMe" value="option1"> Remember me
+							</label> -->
+
+							<hr /><br />
+
+                                                        <button type="submit" class="btn btn-success" ng-click="doLogin(usu)">
+                                                            Login
+                                                        </button>
+						</div>
+                                                <div ng-show="usu.id">
+                                                    
+                                                    <h2>Hola {{usu.fullname}} !</h2> 
+                                                </div>
+						<br />
+                                                <!--
+						<a href="#">register</a>&nbsp;&#124;&nbsp;<a href="#">forgot password?</a>
+                                                -->
+					</form>
+		</div>
+
+	</div>
+
+	<div class="span9">
+				<div class="hero-unit">
+					<h1 class="">{{specialOffer.name}} </h1>
+					<p class="">
+						{{specialOffer.descr}}
+					</p>
+					<p><a href="#/detail/{{specialOffer.id}}" class="btn btn-primary btn-large">Learn more »</a></p>
+				</div>
+
+				<ul class="thumbnails">
+					
+					<li class="span3" ng-repeat="product in products">
+						<div class="thumbnail">
+							<img src="{{product.img}}" alt="">
+							<div class="caption">
+								<h4>{{product.name}}</h4>
+								<p>
+									<!--
+									<strike>Euro 150,00</strike>&nbsp;
+									-->
+									Euro $ {{product.price}}</p>
+								<a class="btn btn-primary" 
+								href="#/detail/{{product.id}}">View</a>
+								<button class="btn btn-success" ng-click="addToCar(product)">
+									Add to Cart
+								</button>
+							</div>
+						</div>
+					</li>
+					
+				</ul>
+	</div>
+
+</div>

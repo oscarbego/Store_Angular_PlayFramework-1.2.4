@@ -1,0 +1,155 @@
+<div class="row">
+	<div class="span3">
+		<div class="well">
+			<div class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<i class="icon-shopping-cart"></i>
+							{{car.length}}  item - $ {{total}}
+					<b class="caret"></b></a>
+				</a> 
+                                
+                                <div class="dropdown-menu well" role="menu" aria-labelledby="dLabel">
+							<div ng-repeat="entreda in car">
+								<a href="#/detail/{{entreda.producto.id}}">
+                                                                        {{entreda.producto.name}} 
+									<br>
+									{{entreda.cantidad}} x $ {{entreda.producto.price}}
+									<br>
+									<span class="pull-right"> Import $ {{entreda.importe}}
+									</span>
+								</a>
+								<hr>
+							</div>
+							
+							<a href="#/cart" class="btn btn-primary">Checkout Total: {{total}}</a>
+				</div>
+                                
+			</div>
+		</div>
+
+		<div class="well">
+			<ul class="nav nav-list">
+				<li class="nav-header">Special Offer</li>
+				<li class="active">
+					<a href="#/detail/{{specialOffer.id}}">{{specialOffer.name}}</a>
+				</li>
+				
+
+				<li class="nav-header">Offer</li>
+
+				<li ng-repeat="offer in offers">
+					<a href="#/detail/{{offer.id}}">{{offer.name}} $ {{offer.price}}</a>
+				</li>
+								
+			</ul>
+		</div>
+
+		<div class="well">
+                    
+                    <div class="well">
+			<form class="form login-form">
+                                                <div ng-hide="usu.id">
+                                                    <h2>Sign in</h2>
+							<label>Username</label>
+							<input ng-model="usu.email" type="text" />
+
+							<label>Password</label>
+							<input ng-model="usu.password" type="password" />
+
+							<!-- <label class="checkbox inline">
+								<input type="checkbox" id="RememberMe" value="option1"> Remember me
+							</label> -->
+
+							<hr /><br />
+
+                                                        <button type="submit" class="btn btn-success" ng-click="doLogin(usu)">
+                                                            Login
+                                                        </button>
+						</div>
+                                                <div ng-show="usu.id">
+                                                    
+                                                    <h2>Hola {{usu.fullname}} !</h2> 
+                                                </div>
+						<br />
+                                                <!--
+						<a href="#">register</a>&nbsp;&#124;&nbsp;<a href="#">forgot password?</a>
+                                                -->
+					</form>
+                    </div>
+    
+                    
+                <!--    
+					<form class="form login-form">
+						<h2>Sign in</h2>
+						<div>
+							<label>Username</label>
+							<input id="Username" name="Username" type="text" />
+
+							<label>Password</label>
+							<input id="Password" name="Password" type="password" />
+
+							<label class="checkbox inline">
+								<input type="checkbox" id="RememberMe" value="option1"> Remember me
+							</label>
+
+							<br /><br />
+
+							<button type="submit" class="btn btn-success">Login</button>
+						</div>
+						<br />
+						<a href="#">register</a>&nbsp;&#124;&nbsp;<a href="#">forgot password?</a>
+					</form>
+		-->
+                
+                </div>
+
+	</div>
+
+	<div class="span9">
+				<div class="row">
+					<div class="span5">
+						<div id="items-carousel" class="carousel slide mbottom0">
+							<div class="carousel-inner">
+								<div class="active item">
+									<img class="media-object" src="{{detail.img}}" alt="" />
+								</div>
+
+								<div class="item">
+									<img class="media-object" src="https://s3-eu-west-1.amazonaws.com/files.youmagine.com/uploads/image/file/45624/medium_keychain.jpg" alt="" />
+								</div>
+
+								<div class="item">
+									<img class="media-object" src="http://ng-guide.com/angularjs-talk/images/angularjs/square-new.png" alt="" />
+								</div>
+							</div>
+							<!--
+							<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+							<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+							-->
+						</div>
+					</div>
+
+					<div class="span4">
+						<h4>{{detail.name}} Modelo X</h4>
+						<h5>Modelo X</h5>
+						<p>{{detail.decri}}</p>
+						<h4>Precio: $ {{detail.price}}</h4>
+
+						<h5>Options</h5>
+						<form>
+							
+							<label>
+								<input type="text" id="quantity" name="quantity" value="1" class="span1" ng-model="detail.cantidad" />&nbsp;Qty
+							</label>
+							<button class="btn btn-primary" ng-click="addToCar(detail)">Add to Chart</button>
+						</form>
+						<!-- <a href="#">+ Add to whishlist</a> -->
+						
+					</div>
+				</div>
+
+				<hr>
+				
+	</div>
+
+</div>
